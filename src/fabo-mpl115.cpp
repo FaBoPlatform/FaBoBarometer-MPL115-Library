@@ -17,8 +17,8 @@ int mpl115::readPADC()
 {
   byte buffer[2];
   readI2c(MPL115_PADC_MSB_REG, 2, buffer); 
-  int pressure_value = buffer[1]<<2;
-  pressure_value |= buffer[0];
+  int pressure_value = buffer[0]<<2;
+  pressure_value |= buffer[1];
 
   return pressure_value;
 }
@@ -27,8 +27,8 @@ int mpl115::readTADC()
 {
   byte buffer[2];
   readI2c(MPL115_TADC_MSB_REG, 2, buffer); 
-  int temperature_value = buffer[1]<<2;
-  temperature_value |= buffer[0];
+  int temperature_value = buffer[0]<<2;
+  temperature_value |= buffer[1];
 
   return temperature_value;
 }
@@ -37,10 +37,10 @@ void mpl115::readCoefficient(uint16_t *a0, uint16_t *b1, uint16_t *b2, uint16_t 
 {
   byte buffer[8];
   readI2c(MPL115_A0_MSB_REG, 8, buffer); 
-  *a0 = (((int)buffer[1]) << 8) | buffer[0];
-  *b1 = (((int)buffer[3]) << 8) | buffer[2];
-  *b2 = (((int)buffer[5]) << 8) | buffer[4];
-  *c12 = (((int)buffer[7]) << 8) | buffer[6];
+  *a0 = (((int)buffer[0]) << 8) | buffer[1];
+  *b1 = (((int)buffer[2]) << 8) | buffer[3];
+  *b2 = (((int)buffer[4]) << 8) | buffer[5];
+  *c12 = (((int)buffer[6]) << 8) | buffer[7];
 }
 
 // I2Cへの書き込み
