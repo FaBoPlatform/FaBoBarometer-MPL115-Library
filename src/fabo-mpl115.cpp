@@ -1,6 +1,6 @@
 #include "fabo-mpl115.h"
 
-float mpl115::readPressure(){
+float FaBoBarometer::readPressure(){
   int padc = readPADC();
   int tadc = readTADC();
 
@@ -13,7 +13,7 @@ float mpl115::readPressure(){
   return pressure;
 }
 
-int mpl115::readPADC()
+int FaBoBarometer::readPADC()
 {
   byte buffer[2];
   readI2c(MPL115_PADC_MSB_REG, 2, buffer); 
@@ -23,7 +23,7 @@ int mpl115::readPADC()
   return pressure_value;
 }
 
-int mpl115::readTADC()
+int FaBoBarometer::readTADC()
 {
   byte buffer[2];
   readI2c(MPL115_TADC_MSB_REG, 2, buffer); 
@@ -33,7 +33,7 @@ int mpl115::readTADC()
   return temperature_value;
 }
 
-void mpl115::readCoefficient(uint16_t *a0, uint16_t *b1, uint16_t *b2, uint16_t *c12)
+void FaBoBarometer::readCoefficient(uint16_t *a0, uint16_t *b1, uint16_t *b2, uint16_t *c12)
 {
   byte buffer[8];
   readI2c(MPL115_A0_MSB_REG, 8, buffer); 
@@ -44,7 +44,7 @@ void mpl115::readCoefficient(uint16_t *a0, uint16_t *b1, uint16_t *b2, uint16_t 
 }
 
 // I2Cへの書き込み
-void mpl115::writeI2c(byte register_addr, byte value) {
+void FaBoBarometer::writeI2c(byte register_addr, byte value) {
   Wire.begin();       // I2Cの開始
   Wire.beginTransmission(MPL115_SLAVE_ADDRESS);  
   Wire.write(register_addr);         
@@ -53,7 +53,7 @@ void mpl115::writeI2c(byte register_addr, byte value) {
 }
 
 // I2Cへの読み込み
-void mpl115::readI2c(byte register_addr, int num, byte buffer[]) {
+void FaBoBarometer::readI2c(byte register_addr, int num, byte buffer[]) {
   Wire.begin();       // I2Cの開始
   Wire.beginTransmission(MPL115_SLAVE_ADDRESS); 
   Wire.write(register_addr);           
@@ -70,5 +70,3 @@ void mpl115::readI2c(byte register_addr, int num, byte buffer[]) {
   }
   Wire.endTransmission();         
 }
-
-mpl115 faboBarometer;

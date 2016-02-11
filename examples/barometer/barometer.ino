@@ -1,6 +1,8 @@
 #include "fabo-mpl115.h"
 #include "Wire.h"
 
+FaBoBarometer faboBarometer;
+
 void setup() {
   Serial.begin(9600);
 }
