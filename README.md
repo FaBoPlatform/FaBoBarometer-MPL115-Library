@@ -1,21 +1,23 @@
 # FaBoBarometer-MPL115-Library
 
-# FaBoBarometer
+This is a library for FaBo #204 Barometer I2C Brick.
 
-This is a library for FaBo Barometer Brick.
+## FaBo Barometer I2C Brick
 
-# MPL115
+[#204 Barometer I2C Brick](http://fabo.io/204.html)
 
-MPL115 is 3axis sensor.
+## MPL115A2
 
-# Datasheet
+MPL115A2 is I2C Digital Barometer.
 
-[MPL115 Datasheet](http://www.nxp.com/files/sensors/doc/data_sheet/MPL115A1.pdf)
+## MPL115A2 Datasheet
 
-# Releases
+[MPL115A2 Datasheet](http://www.nxp.com/files/sensors/doc/data_sheet/MPL115A2.pdf)
 
-1.0.0 Initial release.
+## Releases
 
-# How to install.
+- 1.0.0 Initial release.
 
-[Installing Additional Arduino Libraries](https://www.arduino.cc/en/Guide/Libraries#toc3)
+## How to install.
+
+[Installing Additional Arduino Libraries](https://www.arduino.cc/en/Guide/Libraries)
